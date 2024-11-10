@@ -5,9 +5,9 @@
 /// <reference types="@sveltejs/kit" />
 
 /**
- * Environment variables [loaded by Vite](https://vitejs.dev/guide/env-and-mode.html#env-files) from `.env` files and `process.env`. Like [`$env/dynamic/private`](https://kit.svelte.dev/docs/modules#$env-dynamic-private), this module cannot be imported into client-side code. This module only includes variables that _do not_ begin with [`config.kit.env.publicPrefix`](https://kit.svelte.dev/docs/configuration#env) _and do_ start with [`config.kit.env.privatePrefix`](https://kit.svelte.dev/docs/configuration#env) (if configured).
+ * Environment variables [loaded by Vite](https://vitejs.dev/guide/env-and-mode.html#env-files) from `.env` files and `process.env`. Like [`$env/dynamic/private`](https://svelte.dev/docs/kit/$env-dynamic-private), this module cannot be imported into client-side code. This module only includes variables that _do not_ begin with [`config.kit.env.publicPrefix`](https://svelte.dev/docs/kit/configuration#env) _and do_ start with [`config.kit.env.privatePrefix`](https://svelte.dev/docs/kit/configuration#env) (if configured).
  * 
- * _Unlike_ [`$env/dynamic/private`](https://kit.svelte.dev/docs/modules#$env-dynamic-private), the values exported from this module are statically injected into your bundle at build time, enabling optimisations like dead code elimination.
+ * _Unlike_ [`$env/dynamic/private`](https://svelte.dev/docs/kit/$env-dynamic-private), the values exported from this module are statically injected into your bundle at build time, enabling optimisations like dead code elimination.
  * 
  * ```ts
  * import { API_KEY } from '$env/static/private';
@@ -29,18 +29,14 @@ declare module '$env/static/private' {
 	export const ALLUSERSPROFILE: string;
 	export const APPDATA: string;
 	export const CHROME_CRASHPAD_PIPE_NAME: string;
-	export const COLOR: string;
 	export const COLORTERM: string;
 	export const CommonProgramFiles: string;
 	export const CommonProgramW6432: string;
 	export const COMPUTERNAME: string;
 	export const ComSpec: string;
 	export const DriverData: string;
-	export const EDITOR: string;
-	export const FPS_BROWSER_APP_PROFILE_STRING: string;
-	export const FPS_BROWSER_USER_PROFILE_STRING: string;
+	export const EFC_14472: string;
 	export const GIT_ASKPASS: string;
-	export const HOME: string;
 	export const HOMEDRIVE: string;
 	export const HOMEPATH: string;
 	export const INIT_CWD: string;
@@ -49,30 +45,47 @@ declare module '$env/static/private' {
 	export const LOGONSERVER: string;
 	export const NODE: string;
 	export const NODE_ENV: string;
-	export const npm_command: string;
-	export const npm_config_cache: string;
+	export const npm_config_argv: string;
+	export const npm_config_bin_links: string;
 	export const npm_config_engine_strict: string;
-	export const npm_config_globalconfig: string;
-	export const npm_config_global_prefix: string;
-	export const npm_config_init_module: string;
-	export const npm_config_local_prefix: string;
-	export const npm_config_node_gyp: string;
-	export const npm_config_noproxy: string;
-	export const npm_config_npm_version: string;
-	export const npm_config_prefix: string;
-	export const npm_config_userconfig: string;
+	export const npm_config_ignore_optional: string;
+	export const npm_config_ignore_scripts: string;
+	export const npm_config_init_license: string;
+	export const npm_config_init_version: string;
+	export const npm_config_registry: string;
+	export const npm_config_save_prefix: string;
+	export const npm_config_strict_ssl: string;
 	export const npm_config_user_agent: string;
+	export const npm_config_version_commit_hooks: string;
+	export const npm_config_version_git_message: string;
+	export const npm_config_version_git_sign: string;
+	export const npm_config_version_git_tag: string;
+	export const npm_config_version_tag_prefix: string;
 	export const npm_execpath: string;
 	export const npm_lifecycle_event: string;
 	export const npm_lifecycle_script: string;
 	export const npm_node_execpath: string;
-	export const npm_package_json: string;
+	export const npm_package_description: string;
+	export const npm_package_devDependencies_svelte: string;
+	export const npm_package_devDependencies_svelte_check: string;
+	export const npm_package_devDependencies_typescript: string;
+	export const npm_package_devDependencies_vite: string;
+	export const npm_package_devDependencies__sveltejs_adapter_auto: string;
+	export const npm_package_devDependencies__sveltejs_kit: string;
+	export const npm_package_devDependencies__sveltejs_vite_plugin_svelte: string;
 	export const npm_package_name: string;
+	export const npm_package_private: string;
+	export const npm_package_readmeFilename: string;
+	export const npm_package_scripts_build: string;
+	export const npm_package_scripts_check: string;
+	export const npm_package_scripts_check_watch: string;
+	export const npm_package_scripts_dev: string;
+	export const npm_package_scripts_preview: string;
+	export const npm_package_type: string;
 	export const npm_package_version: string;
 	export const NUMBER_OF_PROCESSORS: string;
-	export const NVIDIAWHITELISTED: string;
 	export const OneDrive: string;
-	export const OPERA_CRASHPAD_PIPE_NAME: string;
+	export const OneDriveConsumer: string;
 	export const ORIGINAL_XDG_CURRENT_DESKTOP: string;
 	export const OS: string;
 	export const Path: string;
@@ -88,7 +101,6 @@ declare module '$env/static/private' {
 	export const PSModulePath: string;
 	export const PUBLIC: string;
 	export const SESSIONNAME: string;
-	export const SHIM_MCCOMPAT: string;
 	export const SystemDrive: string;
 	export const SystemRoot: string;
 	export const TEMP: string;
@@ -105,10 +117,11 @@ declare module '$env/static/private' {
 	export const VSCODE_GIT_IPC_HANDLE: string;
 	export const VSCODE_INJECTION: string;
 	export const windir: string;
+	export const YARN_WRAP_OUTPUT: string;
 }
 
 /**
- * Similar to [`$env/static/private`](https://kit.svelte.dev/docs/modules#$env-static-private), except that it only includes environment variables that begin with [`config.kit.env.publicPrefix`](https://kit.svelte.dev/docs/configuration#env) (which defaults to `PUBLIC_`), and can therefore safely be exposed to client-side code.
+ * Similar to [`$env/static/private`](https://svelte.dev/docs/kit/$env-static-private), except that it only includes environment variables that begin with [`config.kit.env.publicPrefix`](https://svelte.dev/docs/kit/configuration#env) (which defaults to `PUBLIC_`), and can therefore safely be exposed to client-side code.
  * 
  * Values are replaced statically at build time.
  * 
@@ -121,7 +134,7 @@ declare module '$env/static/public' {
 }
 
 /**
- * This module provides access to runtime environment variables, as defined by the platform you're running on. For example if you're using [`adapter-node`](https://github.com/sveltejs/kit/tree/main/packages/adapter-node) (or running [`vite preview`](https://kit.svelte.dev/docs/cli)), this is equivalent to `process.env`. This module only includes variables that _do not_ begin with [`config.kit.env.publicPrefix`](https://kit.svelte.dev/docs/configuration#env) _and do_ start with [`config.kit.env.privatePrefix`](https://kit.svelte.dev/docs/configuration#env) (if configured).
+ * This module provides access to runtime environment variables, as defined by the platform you're running on. For example if you're using [`adapter-node`](https://github.com/sveltejs/kit/tree/main/packages/adapter-node) (or running [`vite preview`](https://svelte.dev/docs/kit/cli)), this is equivalent to `process.env`. This module only includes variables that _do not_ begin with [`config.kit.env.publicPrefix`](https://svelte.dev/docs/kit/configuration#env) _and do_ start with [`config.kit.env.privatePrefix`](https://svelte.dev/docs/kit/configuration#env) (if configured).
  * 
  * This module cannot be imported into client-side code.
  * 
@@ -139,18 +152,14 @@ declare module '$env/dynamic/private' {
 		ALLUSERSPROFILE: string;
 		APPDATA: string;
 		CHROME_CRASHPAD_PIPE_NAME: string;
-		COLOR: string;
 		COLORTERM: string;
 		CommonProgramFiles: string;
 		CommonProgramW6432: string;
 		COMPUTERNAME: string;
 		ComSpec: string;
 		DriverData: string;
-		EDITOR: string;
-		FPS_BROWSER_APP_PROFILE_STRING: string;
-		FPS_BROWSER_USER_PROFILE_STRING: string;
+		EFC_14472: string;
 		GIT_ASKPASS: string;
-		HOME: string;
 		HOMEDRIVE: string;
 		HOMEPATH: string;
 		INIT_CWD: string;
@@ -159,30 +168,47 @@ declare module '$env/dynamic/private' {
 		LOGONSERVER: string;
 		NODE: string;
 		NODE_ENV: string;
-		npm_command: string;
-		npm_config_cache: string;
+		npm_config_argv: string;
+		npm_config_bin_links: string;
 		npm_config_engine_strict: string;
-		npm_config_globalconfig: string;
-		npm_config_global_prefix: string;
-		npm_config_init_module: string;
-		npm_config_local_prefix: string;
-		npm_config_node_gyp: string;
-		npm_config_noproxy: string;
-		npm_config_npm_version: string;
-		npm_config_prefix: string;
-		npm_config_userconfig: string;
+		npm_config_ignore_optional: string;
+		npm_config_ignore_scripts: string;
+		npm_config_init_license: string;
+		npm_config_init_version: string;
+		npm_config_registry: string;
+		npm_config_save_prefix: string;
+		npm_config_strict_ssl: string;
 		npm_config_user_agent: string;
+		npm_config_version_commit_hooks: string;
+		npm_config_version_git_message: string;
+		npm_config_version_git_sign: string;
+		npm_config_version_git_tag: string;
+		npm_config_version_tag_prefix: string;
 		npm_execpath: string;
 		npm_lifecycle_event: string;
 		npm_lifecycle_script: string;
 		npm_node_execpath: string;
-		npm_package_json: string;
+		npm_package_description: string;
+		npm_package_devDependencies_svelte: string;
+		npm_package_devDependencies_svelte_check: string;
+		npm_package_devDependencies_typescript: string;
+		npm_package_devDependencies_vite: string;
+		npm_package_devDependencies__sveltejs_adapter_auto: string;
+		npm_package_devDependencies__sveltejs_kit: string;
+		npm_package_devDependencies__sveltejs_vite_plugin_svelte: string;
 		npm_package_name: string;
+		npm_package_private: string;
+		npm_package_readmeFilename: string;
+		npm_package_scripts_build: string;
+		npm_package_scripts_check: string;
+		npm_package_scripts_check_watch: string;
+		npm_package_scripts_dev: string;
+		npm_package_scripts_preview: string;
+		npm_package_type: string;
 		npm_package_version: string;
 		NUMBER_OF_PROCESSORS: string;
-		NVIDIAWHITELISTED: string;
 		OneDrive: string;
-		OPERA_CRASHPAD_PIPE_NAME: string;
+		OneDriveConsumer: string;
 		ORIGINAL_XDG_CURRENT_DESKTOP: string;
 		OS: string;
 		Path: string;
@@ -198,7 +224,6 @@ declare module '$env/dynamic/private' {
 		PSModulePath: string;
 		PUBLIC: string;
 		SESSIONNAME: string;
-		SHIM_MCCOMPAT: string;
 		SystemDrive: string;
 		SystemRoot: string;
 		TEMP: string;
@@ -215,13 +240,14 @@ declare module '$env/dynamic/private' {
 		VSCODE_GIT_IPC_HANDLE: string;
 		VSCODE_INJECTION: string;
 		windir: string;
+		YARN_WRAP_OUTPUT: string;
 		[key: `PUBLIC_${string}`]: undefined;
 		[key: `${string}`]: string | undefined;
 	}
 }
 
 /**
- * Similar to [`$env/dynamic/private`](https://kit.svelte.dev/docs/modules#$env-dynamic-private), but only includes variables that begin with [`config.kit.env.publicPrefix`](https://kit.svelte.dev/docs/configuration#env) (which defaults to `PUBLIC_`), and can therefore safely be exposed to client-side code.
+ * Similar to [`$env/dynamic/private`](https://svelte.dev/docs/kit/$env-dynamic-private), but only includes variables that begin with [`config.kit.env.publicPrefix`](https://svelte.dev/docs/kit/configuration#env) (which defaults to `PUBLIC_`), and can therefore safely be exposed to client-side code.
  * 
  * Note that public dynamic environment variables must all be sent from the server to the client, causing larger network requests — when possible, use `$env/static/public` instead.
  * 
