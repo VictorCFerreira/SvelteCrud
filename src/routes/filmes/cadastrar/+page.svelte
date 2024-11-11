@@ -132,13 +132,13 @@
 
   .button-container {
     display: flex;
-    justify-content: space-between; 
-    width: 100%; 
+    justify-content: space-between;
+    width: 100%;
     padding: 10px 0;
   }
 
   .button-container .left {
-    margin-right: auto; 
+    margin-right: auto;
   }
 
   .button-container .right {

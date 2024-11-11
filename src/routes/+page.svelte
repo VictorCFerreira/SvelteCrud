@@ -44,7 +44,7 @@
       <button on:click={() => goto("/filmes/cadastrar")}
         >Cadatro de filmes</button
       >
-      <button on:click={() => goto("/pagina3")}>Outra página</button>
+      <button on:click={() => goto("/animacao")}>Animação</button>
     </div>
   </div>
 </main>
