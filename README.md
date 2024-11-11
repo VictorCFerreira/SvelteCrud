@@ -51,14 +51,119 @@ Aqui está um exemplo básico de um componente Svelte:
 <button on:click={increment}>Incrementar</button>
 ```
 
-Este exemplo cria um contador simples que incrementa o valor cada vez que o botão é clicado. Note que a reatividade é automática: ao atualizar a variável count, o valor exibido no HTML é atualizado instantaneamente.
+## Runes
+Runas são símbolos que você usa em arquivos .svelte para controlar o compilador Svelte.
+
+As runas têm um `$` como prefixo e se parecem com funções:
+
+```svelte
+let message = $state('hello');
+```
+
+### $state
+
+O $state permite que você crie um estado reativo, o que significa que sua IU reage quando a variável muda.
+
+```svelte
+<script>
+	let count = $state(0);
+</script>
+
+<button onclick={() => count++}>
+	clicks: {count}
+</button>
+```
+
+### $derived
+
+Usado para acompanhar um outro state
+
+```svelte
+<script>
+	let count = $state(0);
+	let doubled = $derived(count * 2);
+</script>
+
+<button onclick={() => count++}>
+   Incrementar
+</button>
+
+<p>Contador: {count}</p>
+<p>O dobro do contador: {doubled}</p>
+```
+
+### $effect
+
+Basicamente tudo do aplicativo svelte é um $effect e são criados de maneira automática, mas também é possivel criar efeitos por conta própria se necessário.
+
+### $props
+
+Usado para dar entradas em componentes.
+
+```svelte
+// MyComponent.svelte
+
+<script>
+	import MyComponent from './MyComponent.svelte';
+</script>
+
+<MyComponent adjective="cool" />
+```
+
+Recuperando os dados MyComponent.svelte
+
+```svelte
+<script>
+	let props = $props();
+</script>
+
+<p>this component is {props.adjective}</p>
+```
+
+### $bindable
+
+Funciona de maneira agregada ao $props, serve para acessar valores de pai pra filho.
+
+### $inspect
+
+Funciona como um console.log, que é executado toda vez que a variável sofre uma alteração.
+
+## Template syntax
+
+O Svelte permite construir componentes usando condicionais, uso de variáveis e métodos dentro do próprio template.
+
+### Condicionais
+
+```svelte
+{#if temperature > 30}
+	<p>Muito quente!</p>
+{:else if temperature < 10}
+	<p>Muito frio!</p>
+{:else}
+	<p>Perfeito!</p>
+{/if}
+```
+### Promises
+
+```svelte
+{#await promise}
+	<p>Aguardando promise...</p>
+{:then value}
+	<!-- Promise resolvida -->
+	<p>The value is {value}</p>
+{:catch error}
+	<!-- Promisse rejeitada -->
+	<p>Something went wrong: {error.message}</p>
+{/await}
+```
 
 ## Vantagens do Svelte
 
-- **Desempenho Superior**: O Svelte elimina a necessidade do Virtual DOM, oferecendo uma aplicação mais rápida e com menor consumo de memória.
-- **Menor Curva de Aprendizado**: A sintaxe é mais próxima do JavaScript, HTML e CSS puros, facilitando o aprendizado.
-- **Código Mais Limpo e Leve**: Menos sobrecarga de código para o navegador processar, o que resulta em um melhor desempenho.
+- **Alto desempenho**: O Svelte elimina a necessidade do Virtual DOM, oferecendo uma aplicação mais rápida e com menor consumo de memória.
+- **Rapida curva de aprendizado**: A sintaxe é mais próxima do JavaScript, HTML e CSS puros, facilitando o aprendizado.
+- **Código limpo e leve**: Menos sobrecarga de código para o navegador processar, o que resulta em um melhor desempenho.
 
 ## Conclusão
 
-O Svelte é uma opção poderosa para desenvolvimento front-end moderno, proporcionando uma experiência leve e reativa com código mais limpo e de fácil manutenção. Suas vantagens em termos de desempenho e simplicidade têm ganhado a atenção de desenvolvedores em busca de soluções inovadoras e eficientes para construção de aplicações web.
+O Svelte é uma opção poderosa para desenvolvimento front-end moderno, proporcionando uma experiência leve e reativa com código mais limpo e de fácil manutenção.
+Por outro lado, para construções de aplicações maiores, o Svelte pode não ser a melhor opção, pois pode tornar o código muito confuso e de difícil manutenção.
